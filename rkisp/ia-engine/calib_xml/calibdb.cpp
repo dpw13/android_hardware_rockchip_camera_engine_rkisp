@@ -1422,7 +1422,7 @@ bool CalibDb::parseEntryHeader
 		 	meta_data.isp_output_type = isp_gray_output_type;
      }else if(s_value == CALIB_HEADER_ISP_OUTPUT_MIXTURE_TYPE_TAG){
 		 	meta_data.isp_output_type = isp_mixture_output_type;
-     }else{
+     } else {
 
 #if 1
   		LOGD( "%s(%d):parse error in isp_output_type section (unknow tag: %s)\n",
@@ -2278,7 +2278,7 @@ bool CalibDb::parseEntryAecFPSSetConfig
 			int i = (sizeof(pAecData->FpsFixTimeDot) / sizeof(pAecData->FpsFixTimeDot.fCoeff[0]));
   			int no = ParseFloatArray(tag.Value(), pAecData->FpsFixTimeDot.fCoeff, i);
   			DCT_ASSERT((no == i));
-		}else{
+		} else {
 			 LOGE( "%s(%d):parse error in AEC fps setting section (unknow tag: %s)\n",
 				  __FUNCTION__,__LINE__,tagname.c_str());
 			 return false;
@@ -2540,7 +2540,7 @@ bool CalibDb::parseEntryAecBackLightWeightMethod
         }else if (XML_CHECK_TAGID_COMPARE(CALIB_SENSOR_AEC_BACKLIGHT_WEIGHTMAXTH_TAG_ID)){
           int no = ParseFloatArray(tag.Value(), &pAecData->backLightConf.weightMaxTh, tag.Size());
           DCT_ASSERT((no == tag.Size()));
-        }else{
+        } else {
 		   LOGE( "%s(%d):parse error in AEC BackLight WeightMethod section (unknow tag: %s)\n",
 			  __FUNCTION__,__LINE__,tagname.c_str());
 		   return false;
@@ -2614,7 +2614,7 @@ bool CalibDb::parseEntryAecBackLightDarkROIMethod
 	      	int i = (sizeof(pAecData->backLightConf.DyLocalSetPoint) / sizeof(pAecData->backLightConf.DyLocalSetPoint.fCoeff[0]));
 	      	int no = ParseFloatArray(tag.Value(), pAecData->backLightConf.DyLocalSetPoint.fCoeff, i);
 	      	DCT_ASSERT((no == tag.Size()));
-		}else{
+		} else {
 		   LOGE( "%s(%d):parse error in AEC BackLight DarkROIMethod section (unknow tag: %s)\n",
 			  __FUNCTION__,__LINE__,tagname.c_str());
 		   return false;
@@ -2837,7 +2837,7 @@ bool CalibDb::parseEntryAecHdrCtrlLframe
 	       int i = (sizeof(pAecData->HdrCtrl.L2M_Ratio) / sizeof(pAecData->HdrCtrl.L2M_Ratio.fCoeff[0]));
 	      	int no = ParseFloatArray(tag.Value(), pAecData->HdrCtrl.L2M_Ratio.fCoeff, i);
 		  DCT_ASSERT((no == tag.Size()));
-		}else{
+		} else {
 		   LOGE( "%s(%d):parse error in AEC HDRAE LframeCtrl section (unknow tag: %s)\n",
 			  __FUNCTION__,__LINE__,tagname.c_str());
 		   return false;
@@ -3107,7 +3107,7 @@ bool CalibDb::parseEntryAecFlashCtrl
 	    }else if (XML_CHECK_TAGID_COMPARE(CALIB_SENSOR_FLASHCTRL_PREFLASH_MEANLUMA_OE_THH_TAG_ID)){
 	      	int no = ParseFloatArray(tag.Value(), &pAecData->flashCtrl.preflash_meanluma_OE_thH, 1);
 			DCT_ASSERT((no == tag.Size()));
-	    }else{
+	    } else {
 			LOGE( "%s(%d):parse error in AEC FlashCtrl section (unknow tag: %s)\n",
 				  __FUNCTION__,__LINE__,tagname.c_str());
 		  	return false;
@@ -3633,7 +3633,7 @@ bool CalibDb::parseAECDySetpoint
 		 pDySetpointFile->pExpValue = (float*)malloc((tag.Size() * sizeof(float)));
 	  if(!pDySetpointFile->pExpValue){
 		  LOGE( "%s(%d): malloc fail\n", __FUNCTION__,__LINE__);
-  	  }else{
+  	  } else {
 		  int no = ParseFloatArray(tag.Value(), pDySetpointFile->pExpValue, tag.Size());
 	      DCT_ASSERT((no == tag.Size()));
 		  nExpValue = no;
@@ -3643,7 +3643,7 @@ bool CalibDb::parseAECDySetpoint
 		 pDySetpointFile->pDySetpoint = (float*)malloc((tag.Size() * sizeof(float)));
 	  if(!pDySetpointFile->pDySetpoint){
 	      LOGE( "%s(%d): malloc fail\n", __FUNCTION__,__LINE__);
-  	  }else{
+  	  } else {
 		  int no = ParseFloatArray(tag.Value(), pDySetpointFile->pDySetpoint, tag.Size());
 	      DCT_ASSERT((no == tag.Size()));
 		  nDysetpoint = no;
@@ -3652,7 +3652,7 @@ bool CalibDb::parseAECDySetpoint
 	{
 		int no = ParseFloatArray(tag.Value(), &pDySetpointFile->filter_fac, 1);
 		DCT_ASSERT((no == 1));
-	}else{
+	} else {
 		LOGE( "%s(%d): parse error inDynamic Setpoint (%s)\n", __FUNCTION__,__LINE__,tagname.c_str());
 		return false;
 	}
@@ -3757,7 +3757,7 @@ bool CalibDb::parseAECExpSeparate
 	  int no = ParseFloatArray(tag.Value(), pExpSeparate->ecmSGainDot.fCoeff, tag.Size());
       DCT_ASSERT((no == tag.Size()));
 	  nSGainDot = no;
-	}else{
+	} else {
 	  LOGE( "%s(%d): parse error AEC_EXP_SEPARATE Setpoint (%s)\n", __FUNCTION__,__LINE__,tagname.c_str());
 	  return false;
 	}
@@ -4069,7 +4069,7 @@ bool CalibDb::parseEntryAwb_V10_Para
 
 		  return (false);
 		}
-	}else{
+	} else {
 #if 1
         LOGE( "%s(%d): parse error in AWB section (unknow tag: %s)\n", __FUNCTION__,__LINE__,tagname.c_str());
 #endif
@@ -4130,7 +4130,7 @@ bool CalibDb::parseEntryAwb_V11_Para
 #endif
 		  	return (false);
 		}
-	}else{
+	} else {
 #if 1
         	LOGE( "%s(%d): parse error in AWB section (unknow tag: %s)\n", __FUNCTION__,__LINE__,tagname.c_str());
 #endif
@@ -6865,7 +6865,7 @@ bool CalibDb::parseEntryFilter
 		LOGE( "%s(%d): parse error in Filter DemosiacLP section\n",__FUNCTION__,__LINE__);
 		return (false);
 	  }
-	}else{
+	} else {
 #if 1
       LOGE( "%s(%d): parse error in filter section (unknow tag: %s)\n",
         	__FUNCTION__,__LINE__,tagname.c_str());
@@ -6937,7 +6937,7 @@ bool CalibDb::parseEntryNew3DnrYnr
 		  if(!pNew3Dnr->ynr.pynr_time_weight_level){
 		      LOGE("%s(%d): malloc fail:" ,__FUNCTION__, __LINE__ );
 			  return false;
-	  	  }else{
+	  	  } else {
 			  int no = ParseUintArray(tag.Value(), pNew3Dnr->ynr.pynr_time_weight_level, tag.Size());
 	          DCT_ASSERT((no == tag.Size()));
 			  nYnrTimeLevel = no;
@@ -6947,7 +6947,7 @@ bool CalibDb::parseEntryNew3DnrYnr
 		  if(!pNew3Dnr->ynr.pynr_spat_weight_level){
 		      LOGE("%s(%d): malloc fail:" ,__FUNCTION__, __LINE__ );
 			  return false;
-	  	  }else{
+	  	  } else {
 			  int no = ParseUintArray(tag.Value(), pNew3Dnr->ynr.pynr_spat_weight_level, tag.Size());
 	          DCT_ASSERT((no == tag.Size()));
 			  nYnrSpaceLevel = no;
@@ -7014,7 +7014,7 @@ bool CalibDb::parseEntryNew3DnrUVnr
 		  if(!pNew3Dnr->uvnr.puvnr_weight_level){
 		      LOGE("%s(%d): malloc fail:" ,__FUNCTION__, __LINE__ );
 			  return false;
-	  	  }else{
+	  	  } else {
 			  int no = ParseUintArray(tag.Value(), pNew3Dnr->uvnr.puvnr_weight_level, tag.Size());
 	          DCT_ASSERT((no == tag.Size()));
 			  nUVnrLevel = no;
@@ -7081,7 +7081,7 @@ bool CalibDb::parseEntryNew3DnrSharp
 		  if(!pNew3Dnr->sharp.psharp_weight_level){
 		      LOGE("%s(%d): malloc fail:" ,__FUNCTION__, __LINE__ );
 			  return false;
-	  	  }else{
+	  	  } else {
 			  int no = ParseUintArray(tag.Value(), pNew3Dnr->sharp.psharp_weight_level, tag.Size());
 	          DCT_ASSERT((no == tag.Size()));
 			  nSharpLevel = no;
@@ -7162,7 +7162,7 @@ bool CalibDb::parseEntryNew3DNR
       pNewDsp3DNRProfile->pgain_Level = (float*)malloc((tag.Size() * sizeof(float)));
 	  if(!pNewDsp3DNRProfile->pgain_Level){
 	      LOGE("%s(%d): malloc fail:" ,__FUNCTION__, __LINE__ );
-  	  }else{
+  	  } else {
 		  int no = ParseFloatArray(tag.Value(), pNewDsp3DNRProfile->pgain_Level, tag.Size());
 	      DCT_ASSERT((no == tag.Size()));
 		  nGainLevel = no;
@@ -7266,7 +7266,7 @@ bool CalibDb::parseEntry3DnrLevel
 		  if(!p3Dnr->sDefaultLevelSetting.pluma_sp_nr_level){
 		      LOGE("%s(%d): malloc fail:" ,__FUNCTION__, __LINE__ );
 			  return false;
-	  	  }else{
+	  	  } else {
 			  int no = ParseUcharArray(tag.Value(), p3Dnr->sDefaultLevelSetting.pluma_sp_nr_level, tag.Size());
 	          DCT_ASSERT((no == tag.Size()));
 			  nLumaSpNrLevel = no;
@@ -7279,7 +7279,7 @@ bool CalibDb::parseEntry3DnrLevel
 		  if(!p3Dnr->sDefaultLevelSetting.pluma_te_nr_level){
 		      LOGE("%s(%d): malloc fail:" ,__FUNCTION__, __LINE__ );
 			  return false;
-	  	  }else{
+	  	  } else {
  			  int no = ParseUcharArray(tag.Value(), p3Dnr->sDefaultLevelSetting.pluma_te_nr_level, tag.Size());
  	          DCT_ASSERT((no == tag.Size()));
 			  nLumaTeNrLevel = no;
@@ -7292,7 +7292,7 @@ bool CalibDb::parseEntry3DnrLevel
 		  if(!p3Dnr->sDefaultLevelSetting.pchrm_sp_nr_level){
 		      LOGE("%s(%d): malloc fail:" ,__FUNCTION__, __LINE__ );
 			  return false;
-	  	  }else{
+	  	  } else {
 			  int no = ParseUcharArray(tag.Value(), p3Dnr->sDefaultLevelSetting.pchrm_sp_nr_level, tag.Size());
 			  DCT_ASSERT((no == tag.Size()));
 			  nChrmSpNrLevel = no;
@@ -7305,7 +7305,7 @@ bool CalibDb::parseEntry3DnrLevel
 		  if(!p3Dnr->sDefaultLevelSetting.pchrm_te_nr_level){
 		      LOGE("%s(%d): malloc fail:" ,__FUNCTION__, __LINE__ );
 			  return false;
-	  	  }else{
+	  	  } else {
 			  int no = ParseUcharArray(tag.Value(), p3Dnr->sDefaultLevelSetting.pchrm_te_nr_level, tag.Size());
 			  DCT_ASSERT((no == tag.Size()));
 			  nChrmTeNrLevel = no;
@@ -7318,7 +7318,7 @@ bool CalibDb::parseEntry3DnrLevel
 		  if(!p3Dnr->sDefaultLevelSetting.pshp_level){
 		      LOGE("%s(%d): malloc fail:" ,__FUNCTION__, __LINE__ );
 			  return false;
-	  	  }else{
+	  	  } else {
 			  int no = ParseUcharArray(tag.Value(), p3Dnr->sDefaultLevelSetting.pshp_level, tag.Size());
 			  DCT_ASSERT((no == tag.Size()));
 			  nShpLevel = no;
@@ -7394,7 +7394,7 @@ bool CalibDb::parseEntry3DnrLuma
 		  if(!p3Dnr->sLumaSetting.pluma_sp_rad){
 		      LOGE("%s(%d): malloc fail:" ,__FUNCTION__, __LINE__ );
 			  return false;
-	  	  }else{
+	  	  } else {
 			  int no = ParseUcharArray(tag.Value(), p3Dnr->sLumaSetting.pluma_sp_rad, tag.Size());
 			  DCT_ASSERT((no == tag.Size()));
 			  nLumaSpRad = no;
@@ -7404,7 +7404,7 @@ bool CalibDb::parseEntry3DnrLuma
 		  if(!p3Dnr->sLumaSetting.pluma_te_max_bi_num){
 		      LOGE("%s(%d): malloc fail:" ,__FUNCTION__, __LINE__ );
 			  return false;
-	  	  }else{
+	  	  } else {
 			  int no = ParseUcharArray(tag.Value(), p3Dnr->sLumaSetting.pluma_te_max_bi_num, tag.Size());
 			  DCT_ASSERT((no == tag.Size()));
 			  nLumaTeMaxBiNum = no;
@@ -7425,7 +7425,7 @@ bool CalibDb::parseEntry3DnrLuma
 				  LOGE("%s(%d): malloc fail, col:%d row:%d \n" ,
 				  	__FUNCTION__, __LINE__, weight_col, weight_row);
 			  	  return false;
-   		  	    }else{
+   		  	    } else {
    				  int no = ParseUcharArray(tag.Value(), p3Dnr->sLumaSetting.pluma_weight[idx], tag.Size());
    				  DCT_ASSERT((no == tag.Size()));
 				  nLumaWeight[idx] = no;
@@ -7499,7 +7499,7 @@ bool CalibDb::parseEntry3DnrChrm
 		  if(!p3Dnr->sChrmSetting.pchrm_sp_rad){
 		      LOGE("%s(%d): malloc fail:" ,__FUNCTION__, __LINE__ );
 			  return false;
-	  	  }else{
+	  	  } else {
 			  int no = ParseUcharArray(tag.Value(), p3Dnr->sChrmSetting.pchrm_sp_rad, tag.Size());
 			  DCT_ASSERT((no == tag.Size()));
 			  nChrmSpRad = no;
@@ -7509,7 +7509,7 @@ bool CalibDb::parseEntry3DnrChrm
 		  if(!p3Dnr->sChrmSetting.pchrm_te_max_bi_num){
 		      LOGE("%s(%d): malloc fail:" ,__FUNCTION__, __LINE__ );
 			  return false;
-	  	  }else{
+	  	  } else {
 			  int no = ParseUcharArray(tag.Value(), p3Dnr->sChrmSetting.pchrm_te_max_bi_num, tag.Size());
 			  DCT_ASSERT((no == tag.Size()));
 			  nChrmTeMaxBiNum = no;
@@ -7531,7 +7531,7 @@ bool CalibDb::parseEntry3DnrChrm
 			      LOGE("%s(%d): malloc fail, col:%d row:%d \n" ,
 				  	__FUNCTION__, __LINE__, weight_col, weight_row);
 			  	  return false;
-   		  	    }else{
+   		  	    } else {
    				  int no = ParseUcharArray(tag.Value(), p3Dnr->sChrmSetting.pchrm_weight[idx], tag.Size());
    				  DCT_ASSERT((no == tag.Size()));
 				  nChrmWeight[idx] = no;
@@ -7607,7 +7607,7 @@ bool CalibDb::parseEntry3DnrSharp
 		  if(!p3Dnr->sSharpSetting.psrc_shp_thr){
 		      LOGE("%s(%d): malloc fail:" ,__FUNCTION__, __LINE__ );
 			  return false;
-	  	  }else{
+	  	  } else {
 	          int no = ParseUcharArray(tag.Value(), p3Dnr->sSharpSetting.psrc_shp_thr, tag.Size());
 	          DCT_ASSERT((no == tag.Size()));
 			  nSrcShpThr = no;
@@ -7617,7 +7617,7 @@ bool CalibDb::parseEntry3DnrSharp
 		  if(!p3Dnr->sSharpSetting.psrc_shp_div){
 		      LOGE("%s(%d): malloc fail:" ,__FUNCTION__, __LINE__ );
 			  return false;
-	  	  }else{
+	  	  } else {
 	          int no = ParseUcharArray(tag.Value(), p3Dnr->sSharpSetting.psrc_shp_div, tag.Size());
 	          DCT_ASSERT((no == tag.Size()));
 			  nSrcShpDiv = no;
@@ -7627,7 +7627,7 @@ bool CalibDb::parseEntry3DnrSharp
 		  if(!p3Dnr->sSharpSetting.psrc_shp_l){
 		      LOGE("%s(%d): malloc fail:" ,__FUNCTION__, __LINE__ );
 			  return false;
-	  	  }else{
+	  	  } else {
 	          int no = ParseUcharArray(tag.Value(), p3Dnr->sSharpSetting.psrc_shp_l, tag.Size());
 	          DCT_ASSERT((no == tag.Size()));
 			  nSrcShpL = no;
@@ -7637,7 +7637,7 @@ bool CalibDb::parseEntry3DnrSharp
 		  if(!p3Dnr->sSharpSetting.psrc_shp_c){
 		      LOGE("%s(%d): malloc fail:" ,__FUNCTION__, __LINE__ );
 			  return false;
-	  	  }else{
+	  	  } else {
 	          int no = ParseUcharArray(tag.Value(), p3Dnr->sSharpSetting.psrc_shp_c, tag.Size());
 	          DCT_ASSERT((no == tag.Size()));
 			  nSrcShpC = no;
@@ -7659,7 +7659,7 @@ bool CalibDb::parseEntry3DnrSharp
 			      LOGE("%s(%d): malloc fail, col:%d row:%d \n" ,
 				  	__FUNCTION__, __LINE__, weight_col, weight_row);
 			  	  return false;
-   		  	    }else{
+   		  	    } else {
    				  int no = ParseCharArray(tag.Value(), p3Dnr->sSharpSetting.psrc_shp_weight[idx], tag.Size());
    				  DCT_ASSERT((no == tag.Size()));
 				  nSrcShpWeight[idx] = no;
@@ -7747,7 +7747,7 @@ bool CalibDb::parseEntry3DNR
       pDsp3DNRProfile->pgain_Level = (float*)malloc((tag.Size() * sizeof(float)));
 	  if(!pDsp3DNRProfile->pgain_Level){
 	      LOGE("%s(%d): malloc fail:" ,__FUNCTION__, __LINE__ );
-  	  }else{
+  	  } else {
 		  int no = ParseFloatArray(tag.Value(), pDsp3DNRProfile->pgain_Level, tag.Size());
 	      DCT_ASSERT((no == tag.Size()));
 		  nGainLevel = no;
@@ -7756,7 +7756,7 @@ bool CalibDb::parseEntry3DNR
       pDsp3DNRProfile->pnoise_coef_numerator = (uint16_t*)malloc((tag.Size() * sizeof(uint16_t)));
 	  if(!pDsp3DNRProfile->pnoise_coef_numerator){
 	      LOGE("%s(%d): malloc fail:" ,__FUNCTION__, __LINE__ );
-  	  }else{
+  	  } else {
 		  int no = ParseUshortArray(tag.Value(), pDsp3DNRProfile->pnoise_coef_numerator, tag.Size());
 	      DCT_ASSERT((no == tag.Size()));
 		  nNoiseCoefNum = no;
@@ -7765,7 +7765,7 @@ bool CalibDb::parseEntry3DNR
       pDsp3DNRProfile->pnoise_coef_denominator= (uint16_t*)malloc((tag.Size() * sizeof(uint16_t)));
 	  if(!pDsp3DNRProfile->pnoise_coef_denominator){
 	      LOGE("%s(%d): malloc fail:" ,__FUNCTION__, __LINE__ );
-  	  }else{
+  	  } else {
 		  int no = ParseUshortArray(tag.Value(), pDsp3DNRProfile->pnoise_coef_denominator, tag.Size());
 	      DCT_ASSERT((no == tag.Size()));
 		  nNoiseCoefDen = no;
@@ -7798,7 +7798,7 @@ bool CalibDb::parseEntry3DNR
    		return false;
       }
       nSrcShpDiv = pDsp3DNRProfile->ArraySize;
-	}else{
+	} else {
 #if 1
     LOGE( "%s(%d): parse error in filter section (unknow tag: %s)\n",
         	__FUNCTION__,__LINE__,tagname.c_str());
@@ -8866,7 +8866,7 @@ bool CalibDb::parseEntryGoc
       int i = (sizeof(goc_data.WdrOn_GammaY) / sizeof(goc_data.WdrOn_GammaY[0]));
       int no = ParseUshortArray(tag.Value(), goc_data.WdrOn_GammaY, i);
       DCT_ASSERT((no == tag.Size()));
-    }else{
+    } else {
 		LOGE( "%s(%d): unknown GOC register (%s)\n", __FUNCTION__,__LINE__,tagname.c_str());
 		return false;
     }
@@ -9629,7 +9629,7 @@ bool CalibDb::parseEntryCproc
     } else if (XML_CHECK_TAGID_COMPARE(CALIB_SENSOR_CPROC_HUE_TAG_ID)){
       int no = ParseFloatArray(tag.Value(), &cproc_data->cproc_hue, 1);
       DCT_ASSERT((no == tag.Size()));
-    }else{
+    } else {
 #if 1
       LOGE( "%s(%d): parse error in cproc section (unknow tag: %s)\n",
           __FUNCTION__,__LINE__,tagname.c_str());

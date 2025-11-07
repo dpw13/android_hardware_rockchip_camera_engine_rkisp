@@ -5670,7 +5670,7 @@ RESULT CamCalibDbAddGocProfile
      MEMCPY(pNewGoc, pAddGocProfile, sizeof(CamCalibGocProfile_t));
      ListPrepareItem(pNewGoc);
      ListAddTail(&pCamCalibDbCtx->gocProfile, pNewGoc);
-   }else{
+   } else {
      LOGE("%s malloc fail\n", __func__);
 	 return (RET_INVALID_PARM);
    }

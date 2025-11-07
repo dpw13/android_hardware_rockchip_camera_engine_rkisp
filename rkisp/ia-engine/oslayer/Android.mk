@@ -23,7 +23,7 @@ LOCAL_CFLAGS += $(PRJ_CPPFLAGS)
 
 #LOCAL_MODULE_RELATIVE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)/hw
 LOCAL_MODULE:= libisp_oslayer
-ifeq (1,$(strip $(shell expr $(PLATFORM_SDK_VERSION) \>= 26)))
+ifeq (true,$(call math_gt_or_eq,$(PLATFORM_SDK_VERSION),26))
 LOCAL_PROPRIETARY_MODULE := true
 endif
 

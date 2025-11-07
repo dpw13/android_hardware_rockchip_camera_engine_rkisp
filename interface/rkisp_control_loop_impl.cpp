@@ -213,7 +213,7 @@ static int __rkisp_get_sensor_fmt_infos(SmartPtr<V4l2SubDevice> subDev, rkisp_me
 		metadata_info->full_size.width = max_res_w;
 		metadata_info->full_size.height = max_res_h;
 		metadata_info->full_size.fps = max_res_fps;
-	}else{
+	} else {
 		metadata_info->res_num = 2;
 		metadata_info->full_size.width = max_res_w;
 		metadata_info->full_size.height = max_res_h;

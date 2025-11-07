@@ -3169,7 +3169,7 @@ uint32_t calib_check_calc_checksum(){
 
 	if(i < parent_check_info->count){
 		return 0;
-	}else{
+	} else {
 		LOGE("%s(%d): can't find subtag:%s from parent tag:%s, assert!!!\n",
 			__FUNCTION__, __LINE__, tag_name, TAG_NAME(parent_tag_id));
 		DCT_ASSERT(false);

@@ -68,7 +68,7 @@ ifeq ($(IS_NEED_LINK_STLPORT),true)
 LOCAL_SHARED_LIBRARIES += libstlport
 endif
 
-ifeq (1,$(strip $(shell expr $(PLATFORM_SDK_VERSION) \>= 26)))
+ifeq (true,$(call math_gt_or_eq,$(PLATFORM_SDK_VERSION),26))
 LOCAL_PROPRIETARY_MODULE := true
 LOCAL_C_INCLUDES += \
 system/core/libutils/include \

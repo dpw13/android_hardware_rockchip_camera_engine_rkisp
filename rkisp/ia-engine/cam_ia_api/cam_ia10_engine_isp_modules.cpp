@@ -241,7 +241,7 @@ RESULT cam_ia10_isp_flt_config
 	result = CamCalibDbGetResolutionNameByWidthHeight(hCamCalibDb, drv_width, drv_height, &ResName);
 	if (RET_SUCCESS != result) {
 	  LOGE("%s: resolution (%dx%d) not found in database\n", __func__,drv_width, drv_height);
-	}else{
+	} else {
 	  result = CamCalibDbGetDpfProfileByResolution(hCamCalibDb, ResName, &pDpfProfile_t);
 	  if (RET_SUCCESS != result) {
 	    LOGE("%s: get dpf fail (%dx%d) (%s) not found in database\n", __func__,drv_width, drv_height, ResName);
@@ -548,7 +548,7 @@ RESULT cam_ia10_isp_flt_config
 		result = CamCalibDbGetNoOfFilterProfile(hCamCalibDb, pDpfProfile_t, &no_filter);
 		if(result != RET_SUCCESS){
 			LOGE("fail to get no FilterProfile, ret: %d", result);
-		}else{
+		} else {
 			if(no_filter > 0 && pDpfProfile_t != NULL){
 				if(LightMode <= LIGHT_MODE_MIN ||  LightMode >= LIGHT_MODE_MAX || LightMode > no_filter)
 					LightMode = LIGHT_MODE_DAY;
@@ -695,7 +695,7 @@ RESULT cam_ia10_isp_goc_config
 		result = CamCalibDbGetNoOfGocProfile(hCamCalibDb, &no_goc);
 		if(result != RET_SUCCESS){
 			LOGD("fail to get no GocProfile, ret: %d", result);
-		}else{
+		} else {
 			if(no_goc > 0){
 				if(LightMode <= LIGHT_MODE_MIN ||  LightMode >= LIGHT_MODE_MAX || LightMode > no_goc)
 					LightMode = LIGHT_MODE_DAY;
@@ -1612,7 +1612,7 @@ RESULT cam_ia10_isp_demosaicLp_config
 	result = CamCalibDbGetResolutionNameByWidthHeight(hCamCalibDb, drv_width, drv_height, &ResName);
 	if (RET_SUCCESS != result) {
 	  LOGE("%s: resolution (%dx%d) not found in database\n", __func__,drv_width, drv_height);
-	}else{
+	} else {
 	  result = CamCalibDbGetDpfProfileByResolution(hCamCalibDb, ResName, &pDpfProfile_t);
 	  if (RET_SUCCESS != result) {
 	    LOGE("%s: get dpf fail (%dx%d) (%s) not found in database\n", __func__,drv_width, drv_height, ResName);
@@ -1628,14 +1628,14 @@ RESULT cam_ia10_isp_demosaicLp_config
 	
 	if(result != RET_SUCCESS){
 		LOGE("fail to get no FilterProfile, ret: %d", result);
-	}else{
+	} else {
 		if(no_filter > 0 && pDpfProfile_t != NULL){
 			if(LightMode <= LIGHT_MODE_MIN ||  LightMode >= LIGHT_MODE_MAX || LightMode > no_filter)
 				LightMode = LIGHT_MODE_DAY;
 		    result = CamCalibDbGetFilterProfileByIdx(hCamCalibDb, pDpfProfile_t, LightMode, &pFilterProfile);
 		    if (result != RET_SUCCESS) {
 		      LOGE("fail to get filter profile fail ret: %d", result);
-		    }else{
+		    } else {
 				pDemosaicLpConf = &pFilterProfile->DemosaicLpConf;
 		    }
 		}
@@ -1693,7 +1693,7 @@ RESULT cam_ia10_isp_demosaicLp_config
 		demosaicLP_result->lu_divided[1] = pDemosaicLpConf->lu_divided[1];
 		demosaicLP_result->lu_divided[2] = pDemosaicLpConf->lu_divided[2];
 		demosaicLP_result->lu_divided[3] = pDemosaicLpConf->lu_divided[3];
-	}else{
+	} else {
 		demosaicLP_result->lp_en = 0;
 		demosaicLP_result->use_old_lp = 0;
 		demosaicLP_result->rb_filter_en = 0;
@@ -1784,7 +1784,7 @@ RESULT cam_ia10_isp_rkIEsharp_config
 		memcpy(rkIEsharp_result->line1_filter_coe, pIesharpenProfile->lgridconf.line1_filter_coe, sizeof(rkIEsharp_result->line1_filter_coe));
 		memcpy(rkIEsharp_result->line2_filter_coe, pIesharpenProfile->lgridconf.line2_filter_coe, sizeof(rkIEsharp_result->line2_filter_coe));
 		memcpy(rkIEsharp_result->line3_filter_coe, pIesharpenProfile->lgridconf.line3_filter_coe, sizeof(rkIEsharp_result->line3_filter_coe));
-	}else{
+	} else {
 		rkIEsharp_result->iesharpen_en = 0;
 	}
   } else{

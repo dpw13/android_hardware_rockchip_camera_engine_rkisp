@@ -838,7 +838,7 @@ AiqCommonHandler::processTuningToolBlsMetaResults(CameraMetadata* metadata, stru
             blc_param[2] = 1;
         else if(_aiq_compositor->tool_isp_params.bls_config.en_windows == 1)
             blc_param[2] = 2;
-    }else{
+    } else {
         blc_param[2] = 0;
     }
 
@@ -974,7 +974,7 @@ AiqCommonHandler::processTuningToolCcmMetaResults(CameraMetadata* metadata, stru
        (fVal[4]==1.0) && (fVal[5]==0.0) && (fVal[6]==0.0) && (fVal[7]==0.0) && (fVal[8]==1.0))
     {
         ccm_param[0] = 0;
-    }else{
+    } else {
         ccm_param[0] = 1;
     }
 
@@ -1001,7 +1001,7 @@ AiqCommonHandler::processTuningToolCcmMetaResults(CameraMetadata* metadata, stru
            (fVal[4]==1.0) && (fVal[5]==0.0) && (fVal[6]==0.0) && (fVal[7]==0.0) && (fVal[8]==1.0))
         {
             ccm_param[0] = 0;
-        }else{
+        } else {
             ccm_param[0] = 1;
         }
     }
@@ -2360,7 +2360,7 @@ void RKiqCompositor::tuning_tool_set_bls()
             cfg.updated_mask = HAL_ISP_BLS_MASK;
             cfg.enabled[HAL_ISP_BLS_ID] = HAL_ISP_ACTIVE_SETTING;
             _isp10_engine->configureISP(&cfg);
-        }else{
+        } else {
             struct HAL_ISP_cfg_s cfg;
             memset(&cfg,0,sizeof(cfg));
             cfg.updated_mask = HAL_ISP_BLS_MASK;
@@ -2399,7 +2399,7 @@ void RKiqCompositor::tuning_tool_set_lsc()
             if (0==strcasecmp(lscprofile.name, "all")){
                 LOGD("lsc: replace all");
                 CamCalibDbReplaceLscProfileAll(hCalib, &lscprofile);
-            }else{
+            } else {
                 CamLscProfile_t *plsc = NULL;
                 CamCalibDbGetLscProfileByName(hCalib, lscprofile.name, &plsc);
                 if(plsc){
@@ -2419,7 +2419,7 @@ void RKiqCompositor::tuning_tool_set_lsc()
             cfg.enabled[HAL_ISP_LSC_ID] = HAL_ISP_ACTIVE_DEFAULT;
             _isp10_engine->configureISP(&cfg);
             _isp10_engine->setTuningToolAwbParams(NULL);
-        }else{
+        } else {
             struct HAL_ISP_cfg_s cfg;
             memset(&cfg, 0, sizeof(cfg));
             cfg.updated_mask = HAL_ISP_LSC_MASK;
@@ -2451,7 +2451,7 @@ void RKiqCompositor::tuning_tool_set_ccm(CamIA10_AWB_Result_t &awb_results)
                 ccProfile.saturation = 100.0;
                 CamCalibDbReplaceCcProfileAll(hCalib, &ccProfile);
                 CamCalibDbReplaceAwb_V11_IlluminationAll(hCalib, &illum);
-            }else{
+            } else {
                memset(ill_name, 0, sizeof(ill_name));
                sscanf((const char *)ccProfile.name, "%[A-Z,a-z,0-9]_%d", ill_name, &saturation);
                ccProfile.saturation = (float)(saturation);
@@ -2551,7 +2551,7 @@ void RKiqCompositor::tuning_tool_set_awb()
             if(_inputParams->awbToolInputParams.on){
                 awbParam.awbTuning.forceGainEnable = BOOL_FALSE;
                 awbParam.awbTuning.forceIlluEnable = BOOL_FALSE;
-            }else{
+            } else {
                 awbParam.awbTuning.forceGainEnable = BOOL_TRUE;
                 if(_inputParams->awbToolInputParams.lock_ill)
                     awbParam.awbTuning.forceIlluEnable = BOOL_TRUE;
@@ -2658,7 +2658,7 @@ void RKiqCompositor::tuning_tool_set_awb_wp()
             awb_meas.mode = HAL_ISP_AWB_MEASURING_MODE_RGB;
         }else if(_inputParams->awbWpInputParams.awb_mode == 1){
             awb_meas.mode = HAL_ISP_AWB_MEASURING_MODE_YCBCR;
-        }else{
+        } else {
             awb_meas.mode = HAL_ISP_AWB_MEASURING_MODE_YCBCR;
         }
         cfg.updated_mask = HAL_ISP_AWB_MEAS_MASK;
@@ -2756,7 +2756,7 @@ void RKiqCompositor::tuning_tool_set_goc()
             cfg.updated_mask = HAL_ISP_GOC_MASK;
             cfg.enabled[HAL_ISP_GOC_ID] = HAL_ISP_ACTIVE_DEFAULT;
             _isp10_engine->configureISP(&cfg);
-        }else{
+        } else {
             struct HAL_ISP_cfg_s cfg;
             struct HAL_ISP_goc_cfg_s goc_cfg;
             memset(&cfg, 0, sizeof(cfg));
@@ -2787,7 +2787,7 @@ void RKiqCompositor::tuning_tool_set_cproc()
             cfg.updated_mask = HAL_ISP_CPROC_MASK;
             cfg.enabled[HAL_ISP_CPROC_ID] = HAL_ISP_ACTIVE_SETTING;
             _isp10_engine->configureISP(&cfg);
-        }else{
+        } else {
             struct HAL_ISP_cfg_s cfg;
             memset(&cfg, 0, sizeof(cfg));
             cfg.updated_mask = HAL_ISP_CPROC_MASK;
@@ -2862,7 +2862,7 @@ void RKiqCompositor::tuning_tool_set_flt()
         if(pDpfProfile){
             if(_inputParams->fltInputParams.scene_mode==0){
                 CamCalibDbGetFilterProfileByName(hCalib, pDpfProfile, filt_name[0], &pFilterProfile);
-            }else{
+            } else {
                 CamCalibDbGetFilterProfileByName(hCalib, pDpfProfile, filt_name[1], &pFilterProfile);
             }
 
@@ -2908,7 +2908,7 @@ void RKiqCompositor::tuning_tool_set_flt()
                 }
             }
             _flt_en_for_tool = false;
-        }else{
+        } else {
             _flt_en_for_tool = true;
         }
     }

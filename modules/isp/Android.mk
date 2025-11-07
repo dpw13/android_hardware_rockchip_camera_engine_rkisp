@@ -63,7 +63,7 @@ LOCAL_C_INCLUDES += \
 	external/libdrm/include/drm \
 	external/libdrm
 
-ifeq (1,$(strip $(shell expr $(PLATFORM_SDK_VERSION) \>= 26)))
+ifeq (true,$(call math_gt_or_eq,$(PLATFORM_SDK_VERSION),26))
 LOCAL_PROPRIETARY_MODULE := true
 LOCAL_C_INCLUDES += \
 system/core/libutils/include \
@@ -93,7 +93,7 @@ LOCAL_STATIC_LIBRARIES += \
 
 LOCAL_MODULE:= librkisp_analyzer
 
-ifeq (1,$(strip $(shell expr $(PLATFORM_SDK_VERSION) \>= 31)))
+ifeq (true,$(call math_gt_or_eq,$(PLATFORM_SDK_VERSION),31))
 LOCAL_SHARED_LIBRARIES:= \
     liblog
 endif

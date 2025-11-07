@@ -22,14 +22,14 @@ LOCAL_CFLAGS += $(PRJ_CPPFLAGS)
 
 #LOCAL_MODULE_RELATIVE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)/hw
 LOCAL_MODULE:= libisp_aaa_awdr
-ifeq (1,$(strip $(shell expr $(PLATFORM_SDK_VERSION) \>= 26)))
+ifeq (true,$(call math_gt_or_eq,$(PLATFORM_SDK_VERSION),26))
 LOCAL_PROPRIETARY_MODULE := true
 LOCAL_C_INCLUDES += \
 system/core/libutils/include \
 system/core/include \
 frameworks/native/libs/binder/include
 endif
-ifeq (1,$(strip $(shell expr $(PLATFORM_SDK_VERSION) \>= 31)))
+ifeq (true,$(call math_gt_or_eq,$(PLATFORM_SDK_VERSION),31))
 LOCAL_SHARED_LIBRARIES:= \
     liblog
 endif

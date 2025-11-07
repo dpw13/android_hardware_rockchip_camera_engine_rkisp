@@ -472,7 +472,7 @@ RESULT CamIA10Engine::updateAeConfig(struct CamIA10_DyCfg* cfg) {
     } else if ((dCfg.uc == UC_CAPTURE && flashModeState == AEC_FLASH_PREFLASH)
         || (dCfg.uc == UC_CAPTURE && flashModeState == AEC_FLASH_MAINFLASH)) {
         aecCfg.flashModeSetting = AEC_FLASH_MAINFLASH;
-    }else{
+    } else {
         aecCfg.flashModeSetting = AEC_FLASH_FLASHOFF;
     }
 
@@ -1007,7 +1007,7 @@ RESULT CamIA10Engine::runAe(XCamAeParam *param, AecResult_t* result, bool first)
                     !(mLock3AForStillCap & HAL_3A_LOCKS_EXPOSURE))
                     aecDesc->analyze_ae(aecContext, param);
             }
-        }else{ //add check exposure value between AE & 1608 Embedded data
+        } else { //add check exposure value between AE & 1608 Embedded data
             LOGD( "runAEC - 1608 Time_L=%d,Gain_L=%d,Time_M=%d,Gain_M=%d,Time_S=%d,Gain_S=%d\n",
                   mStats.aec.HdrAE_metadata.regTime[0],
                   mStats.aec.HdrAE_metadata.regGain[0],
@@ -1101,7 +1101,7 @@ RESULT CamIA10Engine::runAwb(XCamAwbParam *param, CamIA10_AWB_Result_t* result, 
     if(!lastAecResult.IsHdrExp){
         MeasResult.fGain = dCfg.sensor_mode.gains;
         MeasResult.fIntegrationTime = dCfg.sensor_mode.exp_time_seconds;
-    }else{
+    } else {
         MeasResult.fGain = lastAecResult.analog_gain_code_global/lastAecResult.DCG_Ratio;
         MeasResult.fIntegrationTime = lastAecResult.coarse_integration_time;
         LOGD("%s:fgain=%f,fintegrationTime=%f,DCG_raio=%f\n",__FUNCTION__,
@@ -2088,7 +2088,7 @@ RESULT CamIA10Engine::getAECResults(AecResult_t* result) {
                    sizeof(result->exp_smooth_results));
             //*shd = *set;
         }
-    }else{
+    } else {
         if ((lastAecResult.RegHdrGains[0]!=result->RegHdrGains[0])
             || (lastAecResult.RegHdrTime[0]!=result->RegHdrTime[0])
             || (lastAecResult.RegHdrGains[1]!=result->RegHdrGains[1])
@@ -2361,7 +2361,7 @@ void CamIA10Engine::updateAwbResults
      if (awbDesc) {
         if(awbParams){
             awbDesc->update_awb_params(awbContext, awbParams);
-        }else{
+        } else {
             awbcfg.awbTuning.forceUpdateAwb = AWB_TUNING_ENABLE;
             awbDesc->update_awb_params(awbContext, &awbcfg);
         }

@@ -701,7 +701,7 @@ SettingsProcessor::fillBlsInputParams(const CameraMetadata *settings,
     entry = settings->find(RKCAMERA3_PRIVATEDATA_ISP_BLS_SET);
     if(!entry.count){
         aiqInputParams->blsInputParams.updateFlag = 0;
-    }else{
+    } else {
         aiqInputParams->blsInputParams.updateFlag = 1;
         aiqInputParams->blsInputParams.enable = entry.data.u8[0];
         aiqInputParams->blsInputParams.mode = entry.data.u8[1];
@@ -724,7 +724,7 @@ SettingsProcessor::fillLscInputParams(const CameraMetadata *settings,
     entry = settings->find(RKCAMERA3_PRIVATEDATA_ISP_LSC_SET);
     if(!entry.count){
         aiqInputParams->lscInputParams.updateFlag = 0;
-    }else{
+    } else {
         aiqInputParams->lscInputParams.updateFlag = 1;
         aiqInputParams->lscInputParams.on = entry.data.u8[0];
         memcpy(aiqInputParams->lscInputParams.LscName, &entry.data.u8[1], HAL_ISP_LSC_NAME_LEN);
@@ -749,7 +749,7 @@ SettingsProcessor::fillCcmInputParams(const CameraMetadata *settings,
     entry = settings->find(RKCAMERA3_PRIVATEDATA_ISP_CCM_SET);
     if(!entry.count){
         aiqInputParams->ccmInputParams.updateFlag = 0;
-    }else{
+    } else {
         aiqInputParams->ccmInputParams.updateFlag = 1;
         aiqInputParams->ccmInputParams.on = entry.data.u8[0];
         memcpy(aiqInputParams->ccmInputParams.name, &entry.data.u8[1], 20);
@@ -769,7 +769,7 @@ SettingsProcessor::fillAwbToolInputParams(const CameraMetadata *settings,
     entry = settings->find(RKCAMERA3_PRIVATEDATA_ISP_AWB_SET);
     if(!entry.count){
         aiqInputParams->awbToolInputParams.updateFlag = 0;
-    }else{
+    } else {
         aiqInputParams->awbToolInputParams.updateFlag = 1;
         aiqInputParams->awbToolInputParams.on = entry.data.u8[0];
         memcpy(&aiqInputParams->awbToolInputParams.r_gain, &entry.data.u8[1], 4);
@@ -792,7 +792,7 @@ SettingsProcessor::fillAwbWhitePointInputParams(const CameraMetadata *settings,
     entry = settings->find(RKCAMERA3_PRIVATEDATA_ISP_AWB_WP_SET);
     if(!entry.count){
         aiqInputParams->awbWpInputParams.updateFlag = 0;
-    }else{
+    } else {
         aiqInputParams->awbWpInputParams.updateFlag = 1;
         const uint8_t *pchr = NULL;
         pchr = &entry.data.u8[0];
@@ -906,7 +906,7 @@ SettingsProcessor::fillAwbCurvInputParams(const CameraMetadata *settings,
     entry = settings->find(RKCAMERA3_PRIVATEDATA_ISP_AWB_CURV_SET);
     if(!entry.count){
         aiqInputParams->awbCurveInputParams.updateFlag = 0;
-    }else{
+    } else {
         const uint8_t *pchr = NULL;
         pchr = &entry.data.u8[0];
         aiqInputParams->awbCurveInputParams.updateFlag = 1;
@@ -947,7 +947,7 @@ SettingsProcessor::fillAwbRefGainInputParams(const CameraMetadata *settings,
     entry = settings->find(RKCAMERA3_PRIVATEDATA_ISP_AWB_REFGAIN_SET);
     if(!entry.count){
         aiqInputParams->awbRefGainInputParams.updateFlag = 0;
-    }else{
+    } else {
         const uint8_t *pchr = NULL;
         pchr = &entry.data.u8[0];
         aiqInputParams->awbRefGainInputParams.updateFlag = 1;
@@ -974,7 +974,7 @@ SettingsProcessor::fillGocInputParams(const CameraMetadata *settings,
     entry = settings->find(RKCAMERA3_PRIVATEDATA_ISP_GOC_SET);
     if(!entry.count){
         aiqInputParams->gocInputParams.updateFlag = 0;
-    }else{
+    } else {
         const uint8_t *pchr = NULL;
         pchr = &entry.data.u8[0];
         aiqInputParams->gocInputParams.updateFlag = 1;
@@ -1001,7 +1001,7 @@ SettingsProcessor::fillCprocInputParams(const CameraMetadata *settings,
     entry = settings->find(RKCAMERA3_PRIVATEDATA_ISP_CPROC_SET);
     if(!entry.count){
         aiqInputParams->cprocInputParams.updateFlag = 0;
-    }else{
+    } else {
         const uint8_t *pchr = NULL;
         pchr = &entry.data.u8[0];
         aiqInputParams->cprocInputParams.updateFlag = 1;
@@ -1032,7 +1032,7 @@ SettingsProcessor::fillAdpfInputParams(const CameraMetadata *settings,
     entry = settings->find(RKCAMERA3_PRIVATEDATA_ISP_DPF_SET);
     if(!entry.count){
         aiqInputParams->adpfInputParams.updateFlag = 0;
-    }else{
+    } else {
         const uint8_t *pchr = NULL;
         pchr = &entry.data.u8[0];
         aiqInputParams->adpfInputParams.updateFlag = 1;
@@ -1073,7 +1073,7 @@ SettingsProcessor::fillFltInputParams(const CameraMetadata *settings,
     entry = settings->find(RKCAMERA3_PRIVATEDATA_ISP_FLT_SET);
     if(!entry.count){
         aiqInputParams->fltInputParams.updateFlag = 0;
-    }else{
+    } else {
         const uint8_t *pchr = NULL;
         pchr = &entry.data.u8[0];
         aiqInputParams->fltInputParams.updateFlag = 1;
@@ -1114,7 +1114,7 @@ SettingsProcessor::restartInputParams(const CameraMetadata *settings, AiqInputPa
     entry = settings->find(RKCAMERA3_PRIVATEDATA_ISP_RESTART);
     if(!entry.count){
         aiqInputParams->restartInputParams.updateFlag = 0;
-    }else{
+    } else {
         aiqInputParams->restartInputParams.updateFlag = 1;
         aiqInputParams->restartInputParams.on = entry.data.u8[0];
     }
@@ -1130,7 +1130,7 @@ SettingsProcessor::tuningFlagInputParams(const CameraMetadata *settings, AiqInpu
     entry = settings->find(RKCAMERA3_PRIVATEDATA_TUNING_FLAG);
     if(!entry.count){
         aiqInputParams->tuningFlag = 0;
-    }else{
+    } else {
          aiqInputParams->tuningFlag = entry.data.u8[0];
     }
     return ret;

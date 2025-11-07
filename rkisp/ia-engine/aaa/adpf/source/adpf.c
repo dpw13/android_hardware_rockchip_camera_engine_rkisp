@@ -1127,7 +1127,7 @@ static RESULT AdpfCalcRKIESharpFilterCoe
 	
 	if(fSensorGain <= pRKIESharpProfile->gain_dvide){
 		pGridConf = &pRKIESharpProfile->lgridconf;
-	}else{
+	} else {
 		pGridConf = &pRKIESharpProfile->hgridconf;
 	}
 
@@ -1262,7 +1262,7 @@ static RESULT AdpfApplyConfiguration
 		pAdpfCtx->RKDemosaicLpResult.use_old_lp = pAdpfCtx->pFilterProfile->DemosaicLpConf.use_old_lp;
 		MEMCPY(pAdpfCtx->RKDemosaicLpResult.lu_divided, pAdpfCtx->pFilterProfile->DemosaicLpConf.lu_divided, sizeof(pAdpfCtx->RKDemosaicLpResult.lu_divided));
 		pAdpfCtx->actives |= ADPF_DEMOSAICLP_MASK;
-	}else{
+	} else {
 		pAdpfCtx->RKDemosaicLpResult.lp_en = 0;
 		pAdpfCtx->RKDemosaicLpResult.rb_filter_en = 0;
 		pAdpfCtx->RKDemosaicLpResult.hp_filter_en = 0;
@@ -1302,7 +1302,7 @@ static RESULT AdpfApplyConfiguration
       result = AdpfCalculate3DNRResult(pAdpfCtx, pAdpfCtx->gain, pAdpfCtx->pDsp3DNRSettingProfile, &pAdpfCtx->Dsp3DnrResult);
       RETURN_RESULT_IF_DIFFERENT(result, RET_SUCCESS);
 	  
-	}else{
+	} else {
 	  pAdpfCtx->Dsp3DnrResult.Enable = 0;
       pAdpfCtx->Dsp3DnrResult.luma_sp_nr_en = 0;
       pAdpfCtx->Dsp3DnrResult.luma_te_nr_en = 0;
@@ -1345,7 +1345,7 @@ static RESULT AdpfApplyConfiguration
       result = AdpfCalculateNew3DNRResult(pAdpfCtx, pAdpfCtx->gain, pAdpfCtx->pNew3DNRProfile, &pAdpfCtx->NewDsp3DnrResult);
       RETURN_RESULT_IF_DIFFERENT(result, RET_SUCCESS);
 	  
-	}else{
+	} else {
 	  pAdpfCtx->NewDsp3DnrResult.enable_3dnr = 0;
       pAdpfCtx->NewDsp3DnrResult.enable_dpc = 0;
       pAdpfCtx->NewDsp3DnrResult.enable_ynr = 0;
@@ -1380,7 +1380,7 @@ static RESULT AdpfApplyConfiguration
 		MEMCPY(pAdpfCtx->RKIESharpResult.uv_gauss_other_coe, pAdpfCtx->rkSharpenProfile.uv_gauss_other_coe, sizeof(pAdpfCtx->RKIESharpResult.uv_gauss_other_coe));
 		MEMCPY(pAdpfCtx->RKIESharpResult.lap_mat_coe, pAdpfCtx->rkSharpenProfile.lgridconf.lap_mat_coe, sizeof(pAdpfCtx->RKIESharpResult.lap_mat_coe));
 		pAdpfCtx->actives |= ADPF_RKIESHARP_MASK;
-    }else{
+    } else {
 		pAdpfCtx->RKIESharpResult.iesharpen_en = 0;
 		pAdpfCtx->actives |= ADPF_RKIESHARP_MASK;
     }
@@ -1746,7 +1746,7 @@ RESULT AdpfRun
 		pAdpfCtx->demosaic_th = demosaic_th;
 	  }
 	}  
-  }else{
+  } else {
   	if (dgain > 0.15f || pAdpfCtx->LightMode != LightMode){
     	pAdpfCtx->actives |= ADPF_DENOISE_SHARP_LEVEL_MASK;
 		pAdpfCtx->FltEnable = BOOL_FALSE;
@@ -1760,7 +1760,7 @@ RESULT AdpfRun
 	    RETURN_RESULT_IF_DIFFERENT(result, RET_SUCCESS);
 	    pAdpfCtx->actives |= ADPF_DSP_3DNR_MASK;
 	}
-  }else{
+  } else {
 	pAdpfCtx->Dsp3DnrResult.Enable = 0;
     pAdpfCtx->Dsp3DnrResult.luma_sp_nr_en = 0;
     pAdpfCtx->Dsp3DnrResult.luma_te_nr_en = 0;
@@ -1778,7 +1778,7 @@ RESULT AdpfRun
 		 RETURN_RESULT_IF_DIFFERENT(result, RET_SUCCESS);
 		 pAdpfCtx->actives |= ADPF_NEW_DSP_3DNR_MASK;
 	 }
-   }else{
+   } else {
 	 pAdpfCtx->NewDsp3DnrResult.enable_3dnr = 0;
 	 pAdpfCtx->NewDsp3DnrResult.enable_dpc = 0;
 	 pAdpfCtx->NewDsp3DnrResult.enable_ynr = 0;
@@ -1796,7 +1796,7 @@ RESULT AdpfRun
 		RETURN_RESULT_IF_DIFFERENT( result, RET_SUCCESS );
 		pAdpfCtx->actives |= ADPF_DEMOSAICLP_MASK;
 	}
-  }else{
+  } else {
 	pAdpfCtx->RKDemosaicLpResult.lp_en = 0;
 	pAdpfCtx->actives |= ADPF_DEMOSAICLP_MASK;
   }
@@ -1808,7 +1808,7 @@ RESULT AdpfRun
         RETURN_RESULT_IF_DIFFERENT( result, RET_SUCCESS );
 		pAdpfCtx->actives |= ADPF_RKIESHARP_MASK;
 	}
-  }else{
+  } else {
 	pAdpfCtx->RKIESharpResult.iesharpen_en = 0;
 	pAdpfCtx->actives |= ADPF_RKIESHARP_MASK;
   }

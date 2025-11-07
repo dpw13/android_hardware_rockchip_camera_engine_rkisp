@@ -501,7 +501,7 @@ static void* get_drm_buf(int drm_fd, int width, int height, int bpp)
 {
     struct drm_mode_create_dumb alloc_arg;
     struct drm_mode_map_dumb mmap_arg;
-    struct drm_mode_destroy_dumb destory_arg;
+    struct drm_mode_destroy_dumb destroy_arg;
     int ret;
     void *map;
 
@@ -526,22 +526,22 @@ static void* get_drm_buf(int drm_fd, int width, int height, int bpp)
     if (ret) {
         ERR("failed to create map dumb: %s\n", strerror(errno));
         ret = -EINVAL;
-        goto destory_dumb;
+        goto destroy_dumb;
     }
 
     map = mmap(0, alloc_arg.size, PROT_READ | PROT_WRITE, MAP_SHARED, drm_fd, mmap_arg.offset);
     if (map == MAP_FAILED) {
         ERR("failed to mmap buffer: %s\n", strerror(errno));
         ret = -EINVAL;
-        goto destory_dumb;
+        goto destroy_dumb;
     }
 
     assert(alloc_arg.size == width * height * bpp / 8);
 
-destory_dumb:
-    CLEAR(destory_arg);
-    destory_arg.handle = alloc_arg.handle;
-    drmIoctl(drm_fd, DRM_IOCTL_MODE_DESTROY_DUMB, &destory_arg);
+destroy_dumb:
+    CLEAR(destroy_arg);
+    destroy_arg.handle = alloc_arg.handle;
+    drmIoctl(drm_fd, DRM_IOCTL_MODE_DESTROY_DUMB, &destroy_arg);
     if (ret)
         return NULL;
 
@@ -552,7 +552,7 @@ static void* get_drm_fd(int drm_fd, int width, int height, int bpp, int *export_
 {
     struct drm_mode_create_dumb alloc_arg;
     struct drm_mode_map_dumb mmap_arg;
-    struct drm_mode_destroy_dumb destory_arg;
+    struct drm_mode_destroy_dumb destroy_arg;
     int ret;
     void *map;
 
@@ -576,14 +576,14 @@ static void* get_drm_fd(int drm_fd, int width, int height, int bpp, int *export_
     if (ret) {
         ERR("failed to create map dumb: %s\n", strerror(errno));
         ret = -EINVAL;
-        goto destory_dumb;
+        goto destroy_dumb;
     }
 
     map = mmap(0, alloc_arg.size, PROT_READ | PROT_WRITE, MAP_SHARED, drm_fd, mmap_arg.offset);
     if (map == MAP_FAILED) {
         ERR("failed to mmap buffer: %s\n", strerror(errno));
         ret = -EINVAL;
-        goto destory_dumb;
+        goto destroy_dumb;
     }
 
     assert(alloc_arg.size == width * height * bpp / 8);
@@ -591,17 +591,17 @@ static void* get_drm_fd(int drm_fd, int width, int height, int bpp, int *export_
     if (ret) {
         ERR("failed to export fd: %s\n", strerror(errno));
         ret = -EINVAL;
-        goto destory_dumb;
+        goto destroy_dumb;
     }
 
     drm_handle = alloc_arg.handle;
 
     return map;
 
-destory_dumb:
-    CLEAR(destory_arg);
-    destory_arg.handle = alloc_arg.handle;
-    drmIoctl(drm_fd, DRM_IOCTL_MODE_DESTROY_DUMB, &destory_arg);
+destroy_dumb:
+    CLEAR(destroy_arg);
+    destroy_arg.handle = alloc_arg.handle;
+    drmIoctl(drm_fd, DRM_IOCTL_MODE_DESTROY_DUMB, &destroy_arg);
 
     return NULL;
 }
@@ -864,7 +864,7 @@ static void start_capturing(void)
 static void uninit_device(void)
 {
         unsigned int i;
-        struct drm_mode_destroy_dumb destory_arg;
+        struct drm_mode_destroy_dumb destroy_arg;
 
         for (i = 0; i < n_buffers; ++i) {
                 if (-1 == munmap(buffers[i].start, buffers[i].length))
@@ -872,9 +872,9 @@ static void uninit_device(void)
 
                 if (io == IO_METHOD_DMABUF) {
                         close(buffers[i].v4l2_buf.m.fd);
-                        CLEAR(destory_arg);
-                        destory_arg.handle = drm_handle;
-                        drmIoctl(drm_fd, DRM_IOCTL_MODE_DESTROY_DUMB, &destory_arg);
+                        CLEAR(destroy_arg);
+                        destroy_arg.handle = drm_handle;
+                        drmIoctl(drm_fd, DRM_IOCTL_MODE_DESTROY_DUMB, &destroy_arg);
                 }
         }
 

@@ -19,14 +19,14 @@ LOCAL_C_INCLUDES := \
 	$(LOCAL_PATH)/base \
 
 LOCAL_MODULE:= libisp_log
-ifeq (1,$(strip $(shell expr $(PLATFORM_SDK_VERSION) \>= 26)))
+ifeq (true,$(call math_gt_or_eq,$(PLATFORM_SDK_VERSION),26))
 LOCAL_PROPRIETARY_MODULE := true
 LOCAL_C_INCLUDES += \
 system/core/libutils/include \
 system/core/include
 endif
 
-ifeq (1,$(strip $(shell expr $(PLATFORM_SDK_VERSION) \>= 31)))
+ifeq (true,$(call math_gt_or_eq,$(PLATFORM_SDK_VERSION),31))
 LOCAL_SHARED_LIBRARIES:= \
     liblog
 endif
@@ -119,7 +119,7 @@ LOCAL_C_INCLUDES += \
 endif
 
 LOCAL_MODULE:= librkisp_ctrlloop
-ifeq (1,$(strip $(shell expr $(PLATFORM_SDK_VERSION) \>= 26)))
+ifeq (true,$(call math_gt_or_eq,$(PLATFORM_SDK_VERSION),26))
 LOCAL_CFLAGS += -DANDROID_VERSION_ABOVE_8_X
 LOCAL_PROPRIETARY_MODULE := true
 LOCAL_C_INCLUDES += \
@@ -127,7 +127,7 @@ system/core/libutils/include \
 system/core/include
 endif
 
-ifeq (1,$(strip $(shell expr $(PLATFORM_SDK_VERSION) \>= 31)))
+ifeq (true,$(call math_gt_or_eq,$(PLATFORM_SDK_VERSION),31))
 LOCAL_SHARED_LIBRARIES:= \
     liblog
 endif

@@ -139,7 +139,7 @@ IspController::handle_sof(int64_t time, int frameid)
 	                    _exposure_queue[i].coarse_integration_time,
 	                    _exposure_queue[i].analog_gain);
 	    }
-	}else{
+	} else {
 		for(int i=0; i<_used_exp_que_len; i++) {
 	        num += sprintf(log_str + num, "      |||queue(%d) L(%d-%d) S(%d-%d) expsync\n",
 	                    i,
