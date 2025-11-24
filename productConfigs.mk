@@ -47,9 +47,9 @@ PRJ_CPPFLAGS += -Wno-error=overloaded-virtual
 PRJ_CPPFLAGS += -Wno-error=unused-private-field
 PRJ_CPPFLAGS += -Wno-error=zero-length-array
 PRJ_CPPFLAGS += -Wno-error=gnu-include-next
-PRJ_CPPFLAGS += -Wno-error=c11-extensions
-PRJ_CPPFLAGS += -Wno-error=macro-redefined
-PRJ_CPPFLAGS += -Wno-error=gnu-zero-variadic-macro-arguments
+#PRJ_CPPFLAGS += -Wno-error=c11-extensions
+#PRJ_CPPFLAGS += -Wno-error=macro-redefined
+#PRJ_CPPFLAGS += -Wno-error=gnu-zero-variadic-macro-arguments
 PRJ_CPPFLAGS += -Wno-error=unused-function
 endif
 

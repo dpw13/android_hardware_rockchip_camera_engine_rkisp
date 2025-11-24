@@ -15,10 +15,10 @@ LOCAL_SRC_FILES +=\
 #gstxcamfilter.cpp \
 main_pipe_manager.cpp
 
-LOCAL_CFLAGS += -Wno-error=unused-function -Wno-array-bounds -Wno-error
+LOCAL_CFLAGS += -Wno-error=unused-function
 LOCAL_CFLAGS += -DLINUX  -D_FILE_OFFSET_BITS=64 -DHAS_STDINT_H -DENABLE_ASSERT
 LOCAL_CFLAGS += $(PRJ_CPPFLAGS)
-LOCAL_CPPFLAGS += -std=c++11 -Wno-error
+LOCAL_CPPFLAGS += -std=c++11
 LOCAL_CPPFLAGS +=  -DLINUX  -DENABLE_ASSERT
 LOCAL_CPPFLAGS += $(PRJ_CPPFLAGS)
 

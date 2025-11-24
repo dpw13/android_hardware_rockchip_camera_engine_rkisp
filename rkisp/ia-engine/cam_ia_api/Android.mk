@@ -35,7 +35,7 @@ LOCAL_C_INCLUDES += \
     external/tinyxml2 \
 
 endif
-LOCAL_CFLAGS += -std=c99 -Wno-error=unused-function -Wno-array-bounds
+LOCAL_CFLAGS += -std=c99 -Wno-error=unused-function
 LOCAL_CFLAGS += -DLINUX  -D_FILE_OFFSET_BITS=64 -DHAS_STDINT_H -DENABLE_ASSERT
 LOCAL_CFLAGS += $(PRJ_CPPFLAGS)
 LOCAL_CPPFLAGS += -D_GLIBCXX_USE_C99=1 -DLINUX  -DENABLE_ASSERT

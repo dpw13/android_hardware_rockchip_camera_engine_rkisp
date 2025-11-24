@@ -26,7 +26,7 @@
 
 #ifdef ANDROID_VERSION_ABOVE_8_X
 #define RK_3A_TUNING_FILE_PATH  "/vendor/etc/camera/rkisp1/"
-#elif defined(ANDROID_PLATEFORM)
+#elif defined(ANDROID_PLATFORM)
 #define RK_3A_TUNING_FILE_PATH  "/etc/camera/rkisp1/"
 #else
 #define RK_3A_TUNING_FILE_PATH  "/etc/iqfiles/"

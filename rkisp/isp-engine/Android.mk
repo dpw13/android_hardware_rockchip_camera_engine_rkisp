@@ -13,7 +13,7 @@ LOCAL_SRC_FILES +=\
 	isp10_engine.cpp \
 	isp_ctrl.cpp
 
-LOCAL_CFLAGS += -Wno-error=unused-function -Wno-array-bounds
+LOCAL_CFLAGS += -Wno-error=unused-function
 LOCAL_CFLAGS += -DLINUX  -D_FILE_OFFSET_BITS=64 -DHAS_STDINT_H -DENABLE_ASSERT
 LOCAL_CPPFLAGS += -D_GLIBCXX_USE_C99=1 -DLINUX  -DENABLE_ASSERT
 LOCAL_CPPFLAGS += -std=c++11

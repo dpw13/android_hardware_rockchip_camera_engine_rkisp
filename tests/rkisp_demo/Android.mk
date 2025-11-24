@@ -5,7 +5,7 @@ include $(CLEAR_VARS)
 LOCAL_SRC_FILES :=\
 	rkisp_demo.cpp \
 
-LOCAL_CPPFLAGS += -std=c++11 -Wno-error
+LOCAL_CPPFLAGS += -std=c++11
 LOCAL_CPPFLAGS += -DLINUX
 LOCAL_CPPFLAGS += $(PRJ_CPPFLAGS)
 

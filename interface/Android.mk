@@ -12,7 +12,7 @@ LOCAL_SRC_FILES +=\
 
 #LOCAL_CFLAGS += -Wno-error=unused-function -Wno-array-bounds -Wno-error
 #LOCAL_CFLAGS += -DLINUX  -D_FILE_OFFSET_BITS=64 -DHAS_STDINT_H -DENABLE_ASSERT
-LOCAL_CPPFLAGS += -std=c++11 -Wno-error -frtti
+LOCAL_CPPFLAGS += -std=c++11 -frtti
 LOCAL_CPPFLAGS += -DLINUX
 LOCAL_CPPFLAGS += $(PRJ_CPPFLAGS)
 # LOCAL_CPPFLAGS += -v
@@ -61,7 +61,7 @@ LOCAL_C_INCLUDES += \
     system/media/camera/include \
     system/media/private/camera/include \
     frameworks/av/include
-LOCAL_CFLAGS += -DANDROID_PLATEFORM
+LOCAL_CFLAGS += -DANDROID_PLATFORM
 ifeq (true,$(call math_gt_or_eq,$(PLATFORM_SDK_VERSION),26))
 LOCAL_PROPRIETARY_MODULE := true
 LOCAL_C_INCLUDES += \

@@ -35,10 +35,10 @@ ifeq ($(IS_RKISP),true)
 LOCAL_SRC_FILES += rkiq_params.cpp
 endif
 
-LOCAL_CFLAGS += -Wno-error=unused-function -Wno-array-bounds -Wno-error
+LOCAL_CFLAGS += -Wno-error=unused-function
 LOCAL_CFLAGS += -DLINUX  -D_FILE_OFFSET_BITS=64 -DHAS_STDINT_H -DENABLE_ASSERT
 LOCAL_CFLAGS += $(PRJ_CPPFLAGS)
-LOCAL_CPPFLAGS += -Wno-error -frtti -std=c++11
+LOCAL_CPPFLAGS += -frtti -std=c++11
 LOCAL_CPPFLAGS +=  -DLINUX  -DENABLE_ASSERT
 LOCAL_CPPFLAGS += $(PRJ_CPPFLAGS)
 
